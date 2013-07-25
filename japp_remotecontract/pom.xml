@@ -1,0 +1,189 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.dfwcomputech.japp.remotecontract</groupId>
+  <artifactId>japp_remotecontract</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>japp_remotecontract</name>
+  <url>http://dfwcomputech.com</url>
+  <!-- ****************************************************** 
+  							POM PROPERTIES
+       ****************************************************** -->  
+  <properties>
+  	<cxf.version>2.7.5</cxf.version>
+  	<jaxws.version>2.2.6</jaxws.version>
+  	<maven.prop.version>1.0-alpha-2</maven.prop.version>
+  	<build.helper.version>1.8</build.helper.version>
+  	<cxf-boolean.version>2.6.1</cxf-boolean.version>
+  	<junit.version>LATEST</junit.version>
+  </properties>
+  <!-- ****************************************************** 
+  							DEPENDENCIES
+       ****************************************************** -->        
+  <dependencies>
+    <!-- For the use of @Service @WebService @WebMethod-->
+    <dependency>
+		<groupId>javax.xml.ws</groupId>
+		<artifactId>jaxws-api</artifactId>
+		<version>${jaxws.version}</version>
+	</dependency>
+	<!-- CXF Libraries -->
+    <dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        <version>${cxf.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-transports-http</artifactId>
+        <version>${cxf.version}</version>
+    </dependency>
+    <dependency>
+		<groupId>org.apache.cxf</groupId>
+		<artifactId>cxf-tools-common</artifactId>
+		<version>${cxf.version}</version>
+	</dependency>
+    <!-- JUnit dependencies -->  
+    <dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>${junit.version}</version>
+	    <scope>test</scope>
+    </dependency>
+  </dependencies>
+ <!-- ****************************************************** 
+  						  PLUGINS
+      ****************************************************** -->    
+    <build>
+        <plugins>
+            <!-- Plugin to set the compiler version -->
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-compiler-plugin</artifactId>  
+                <version>2.5</version>  
+                <configuration>  
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>  
+            </plugin>
+            <!-- Plugin to use a Property file on the POM -->
+			<plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>properties-maven-plugin</artifactId>
+			    <version>${maven.prop.version}</version>
+			    <executions>
+			      <execution>
+			        <phase>initialize</phase>
+			        <goals>
+			          <goal>read-project-properties</goal>
+			        </goals>
+			        <configuration>
+			          <files>
+			            <file>src/main/resources/JAPP_remotecontract.properties</file>
+			          </files>
+			        </configuration>
+			      </execution>
+			    </executions>
+			</plugin>
+			<!-- Plugin to add source folders -->
+			<plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>build-helper-maven-plugin</artifactId>
+		        <version>${build.helper.version}</version>
+		        <executions>
+		          <execution>
+		            <id>add-resource</id>
+		            <phase>generate-resources</phase>
+		            <goals>
+		              <goal>add-resource</goal>
+		            </goals>
+		            <configuration>
+		              <resources>
+		                <resource>
+		                	<directory>${model.source.dir}</directory>
+		                </resource>
+		                <resource>
+		                	<directory>${model.resource.dir}</directory>
+		                </resource>		                
+		              </resources>
+		            </configuration>
+		          </execution>
+		        </executions>
+		    </plugin>
+			 <!-- CXF Tools to generate WSDL from java classes-->
+			<plugin>
+			    <groupId>org.apache.cxf</groupId>
+			    <artifactId>cxf-java2ws-plugin</artifactId>
+			    <version>${cxf.version}</version>
+			    <dependencies>
+			        <dependency>
+			            <groupId>org.apache.cxf</groupId>
+			            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+			            <version>${cxf.version}</version>
+			        </dependency>
+			        <dependency>
+			            <groupId>org.apache.cxf</groupId>
+			            <artifactId>cxf-rt-frontend-simple</artifactId>
+			            <version>${cxf.version}</version>
+			        </dependency>
+			    </dependencies>			 
+			    <executions>
+			        <execution>
+			            <id>process-classes</id>
+			            <phase>process-classes</phase>
+			            <configuration>
+			                <className>${service.interface.template}</className>
+			                <genWsdl>true</genWsdl>
+			                <verbose>true</verbose>
+			                <outputFile>${wsdl.full.path}</outputFile>
+			            </configuration>
+			            <goals>
+			                <goal>java2ws</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
+			
+			<!-- CXF Tool to generate Java Bindings from WSDL -->
+           <plugin>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-codegen-plugin</artifactId>
+			<version>${cxf.version}</version>
+			<executions>
+			  <execution>
+			    <id>generate-sources</id>
+			    <phase>generate-sources</phase>
+			    <configuration>
+			        <!-- Destination folder -->
+			    	<sourceRoot>${contract.source.dir}</sourceRoot>
+					<wsdlOptions>
+					  <wsdlOption>
+					      <!-- WSDL to use -->
+					    <wsdl>${wsdl.full.path}</wsdl>
+					    <!-- Binding (transformation) file -->
+					    <bindingFiles>					        
+        					<bindingFile>${bindings.full.path}</bindingFile>
+      					</bindingFiles>      					
+					   	<extraargs>
+					      <extraarg>-xjc-Xbg</extraarg>					     					    
+					    </extraargs>
+					  </wsdlOption>
+					</wsdlOptions>
+			    </configuration>
+			    <goals>
+			      <goal>wsdl2java</goal>
+			    </goals>
+			  </execution>
+			</executions>
+		    <dependencies>
+			    <dependency>
+			        <groupId>org.apache.cxf.xjcplugins</groupId>
+			        <artifactId>cxf-xjc-boolean</artifactId>
+			        <version>${cxf-boolean.version}</version>
+			     </dependency>
+			</dependencies>
+			</plugin>
+        </plugins>      
+  </build>  
+</project>
