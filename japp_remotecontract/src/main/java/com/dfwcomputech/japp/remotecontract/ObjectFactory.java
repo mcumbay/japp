@@ -35,11 +35,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAppUser }
+     * Create an instance of {@link GetCurrentUserResponse }
      * 
      */
-    public JAppUser createJAppUser() {
-        return new JAppUser();
+    public GetCurrentUserResponse createGetCurrentUserResponse() {
+        return new GetCurrentUserResponse();
     }
 
     /**
@@ -51,11 +51,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCurrentUserResponse }
+     * Create an instance of {@link JAppUser }
      * 
      */
-    public GetCurrentUserResponse createGetCurrentUserResponse() {
-        return new GetCurrentUserResponse();
+    public JAppUser createJAppUser() {
+        return new JAppUser();
     }
 
     /**
