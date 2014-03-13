@@ -24,8 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetCurrentUser_QNAME = new QName("http://remotecontract.japp.dfwcomputech.com", "getCurrentUser");
-    private final static QName _GetCurrentUserResponse_QNAME = new QName("http://remotecontract.japp.dfwcomputech.com", "getCurrentUserResponse");
+    private final static QName _LoginResponse_QNAME = new QName("http://remotecontract.japp.dfwcomputech.com", "loginResponse");
+    private final static QName _Login_QNAME = new QName("http://remotecontract.japp.dfwcomputech.com", "login");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.dfwcomputech.japp.remotecontract
@@ -35,45 +35,45 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCurrentUserResponse }
+     * Create an instance of {@link LoginResponse }
      * 
      */
-    public GetCurrentUserResponse createGetCurrentUserResponse() {
-        return new GetCurrentUserResponse();
+    public LoginResponse createLoginResponse() {
+        return new LoginResponse();
     }
 
     /**
-     * Create an instance of {@link GetCurrentUser }
+     * Create an instance of {@link Login }
      * 
      */
-    public GetCurrentUser createGetCurrentUser() {
-        return new GetCurrentUser();
+    public Login createLogin() {
+        return new Login();
     }
 
     /**
-     * Create an instance of {@link JAppUser }
+     * Create an instance of {@link UserSession }
      * 
      */
-    public JAppUser createJAppUser() {
-        return new JAppUser();
+    public UserSession createUserSession() {
+        return new UserSession();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetCurrentUser }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoginResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://remotecontract.japp.dfwcomputech.com", name = "getCurrentUser")
-    public JAXBElement<GetCurrentUser> createGetCurrentUser(GetCurrentUser value) {
-        return new JAXBElement<GetCurrentUser>(_GetCurrentUser_QNAME, GetCurrentUser.class, null, value);
+    @XmlElementDecl(namespace = "http://remotecontract.japp.dfwcomputech.com", name = "loginResponse")
+    public JAXBElement<LoginResponse> createLoginResponse(LoginResponse value) {
+        return new JAXBElement<LoginResponse>(_LoginResponse_QNAME, LoginResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetCurrentUserResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Login }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://remotecontract.japp.dfwcomputech.com", name = "getCurrentUserResponse")
-    public JAXBElement<GetCurrentUserResponse> createGetCurrentUserResponse(GetCurrentUserResponse value) {
-        return new JAXBElement<GetCurrentUserResponse>(_GetCurrentUserResponse_QNAME, GetCurrentUserResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://remotecontract.japp.dfwcomputech.com", name = "login")
+    public JAXBElement<Login> createLogin(Login value) {
+        return new JAXBElement<Login>(_Login_QNAME, Login.class, null, value);
     }
 
 }

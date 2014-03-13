@@ -13,7 +13,14 @@
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="jAppUser">
-    <xs:all/>
+    <xs:all>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="phone" type="xs:string"/>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+    </xs:all>
   </xs:complexType>
 </xs:schema>
   </wsdl:types>

@@ -57,6 +57,7 @@
   						  PLUGINS
       ****************************************************** -->    
     <build>
+
         <plugins>
             <!-- Plugin to use a Property file on the POM -->
 			<plugin>
@@ -111,7 +112,10 @@
 		          </execution>
 		        </executions>
 		    </plugin>
-			 <!-- CXF Tools to generate WSDL from java classes-->
+			 <!-- 
+			 	CXF Tools to generate WSDL from MODEL java classes
+			 	IMPORTANT : Comment cxf-codegen-plugin to generate WSDL     
+			 	-->
 			<plugin>
 			    <groupId>org.apache.cxf</groupId>
 			    <artifactId>cxf-java2ws-plugin</artifactId>
@@ -145,7 +149,9 @@
 			    </executions>
 			</plugin>
 			
-			<!-- CXF Tool to generate Java Bindings from WSDL -->
+			<!-- 
+			     CXF Tool to generate Java Bindings from WSDL 				
+			-->						
            <plugin>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-codegen-plugin</artifactId>
@@ -184,6 +190,7 @@
 			     </dependency>
 			</dependencies>
 			</plugin>
+			
         </plugins>      
   </build>  
 </project>

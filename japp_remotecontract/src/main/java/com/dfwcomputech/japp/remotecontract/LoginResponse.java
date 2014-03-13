@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getCurrentUserResponse complex type.
+ * <p>Java class for loginResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="getCurrentUserResponse">
+ * &lt;complexType name="loginResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="getCurrentUserResponse" type="{http://remotecontract.japp.dfwcomputech.com}jAppUser" minOccurs="0"/>
+ *         &lt;element name="loginResponse" type="{http://remotecontract.japp.dfwcomputech.com}userSession" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,35 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getCurrentUserResponse", propOrder = {
-    "getCurrentUserResponse"
+@XmlType(name = "loginResponse", propOrder = {
+    "loginResponse"
 })
-public class GetCurrentUserResponse {
+public class LoginResponse {
 
-    protected JAppUser getCurrentUserResponse;
+    protected UserSession loginResponse;
 
     /**
-     * Gets the value of the getCurrentUserResponse property.
+     * Gets the value of the loginResponse property.
      * 
      * @return
      *     possible object is
-     *     {@link JAppUser }
+     *     {@link UserSession }
      *     
      */
-    public JAppUser getGetCurrentUserResponse() {
-        return getCurrentUserResponse;
+    public UserSession getLoginResponse() {
+        return loginResponse;
     }
 
     /**
-     * Sets the value of the getCurrentUserResponse property.
+     * Sets the value of the loginResponse property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAppUser }
+     *     {@link UserSession }
      *     
      */
-    public void setGetCurrentUserResponse(JAppUser value) {
-        this.getCurrentUserResponse = value;
+    public void setLoginResponse(UserSession value) {
+        this.loginResponse = value;
     }
 
 }

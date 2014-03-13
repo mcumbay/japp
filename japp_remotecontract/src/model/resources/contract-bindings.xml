@@ -1,4 +1,4 @@
-<jaxws:bindings wsdlLocation="JAPPService.wsdl"
+<jaxws:bindings wsdlLocation="MyWebService.wsdl"
           xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
           xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
