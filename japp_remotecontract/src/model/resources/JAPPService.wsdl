@@ -5,16 +5,16 @@
 <xs:element name="getCurrentUser" type="tns:getCurrentUser"/>
 <xs:element name="getCurrentUserResponse" type="tns:getCurrentUserResponse"/>
 <xs:complexType name="getCurrentUser">
-<xs:sequence/>
-</xs:complexType>
+    <xs:sequence/>
+  </xs:complexType>
 <xs:complexType name="getCurrentUserResponse">
-<xs:sequence>
-<xs:element minOccurs="0" name="getCurrentUserResponse" type="tns:jAppUser"/>
-</xs:sequence>
-</xs:complexType>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="getCurrentUserResponse" type="tns:jAppUser"/>
+    </xs:sequence>
+  </xs:complexType>
 <xs:complexType name="jAppUser">
-<xs:all/>
-</xs:complexType>
+    <xs:all/>
+  </xs:complexType>
 </xs:schema>
   </wsdl:types>
   <wsdl:message name="getCurrentUser">
