@@ -2,6 +2,11 @@ package com.dfwcomputech.contractmodel.japp.data;
 
 import javax.xml.bind.annotation.XmlType;
 
+/*
+ * User Model Class
+ * No getter/setters needed
+ * @autor mcumbay
+ */
 @XmlType(propOrder = {})
 public class JAppUser {
 	private String userName;
